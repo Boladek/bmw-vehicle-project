@@ -15,9 +15,9 @@ class CreateVehicleTypesTable extends Migration
     {
         Schema::create('vehicle_types', function (Blueprint $table) {
             $table->id();
-            $table->unsignedSmallInteger('carId');
+            $table->unsignedSmallInteger('carId')->default(1);
             $table->string('monthOfConstrFrom');
-            $table->string('monthOfConstrTo');
+            $table->string('monthOfConstrTo')->default('202110');
             $table->string('model');
             $table->string('typeName');
             $table->timestamps();
