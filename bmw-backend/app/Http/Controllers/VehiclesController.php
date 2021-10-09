@@ -48,4 +48,13 @@ class VehiclesController extends Controller
         return 'Successfully saved data';
 
     }
+
+    function match (Request $req) 
+    {
+        $param = $req->input;
+        $yourDate = "2009-07-15 00:00:00+00";
+        $query = DB::table('vehicles')->where('model', $param)->get();
+        dd($query, date('Y', strtotime($yourDate)));
+        
+    }
 }

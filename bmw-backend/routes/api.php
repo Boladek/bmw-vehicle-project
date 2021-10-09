@@ -25,6 +25,7 @@ Route::get('/vehicleTypes/create', [VehicleTypesController::class, 'store']);
 
 Route::get('/vehicles', [VehiclesController::class, 'index']);
 Route::get('/vehicles/create', [VehiclesController::class, 'store']);
+Route::post('/vehicle', [VehiclesController::class, 'match']);
 
 
 
