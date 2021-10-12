@@ -1,3 +1,7 @@
+## Prerequisite
+    Make sure you have a local mysql database setup in you machine.
+    Create a new database bmw.
+
 ## Clone from the Repo
     cd bmw-frontend
 ### run yarn start
