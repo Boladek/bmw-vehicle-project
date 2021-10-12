@@ -1,0 +1,45 @@
+.App {
+  text-align: center;
+  display: flex;
+  width: 100vw;
+  height: fit-content;
+  font-family: 'Poppins', sans-serif;
+}
+
+@media screen and (max-width: 600px) {
+  .App {
+    flex-direction: column-reverse;
+  }
+
+  .result {
+    width: 100vw;
+    overflow-x: scroll;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  .dropdown {
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+  }
+
+  h1 {
+    font-size: 18px;
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .dropdown-button{
+    width: 70%;
+    margin: 0 auto;
+    height: 3rem;
+    font-size: 24px;
+    margin-top: 2rem;
+  }
+
+  .dropdown-content {
+    width: 100%;
+  }
+}
