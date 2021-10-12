@@ -1,4 +1,3 @@
-import {useState} from 'react'
 import './Result.css';
 
 export default function Result({vehicleTypes, match}) {

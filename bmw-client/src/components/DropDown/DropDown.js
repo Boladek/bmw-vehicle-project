@@ -8,14 +8,15 @@ export default function DropDown({
   vehicleTypes,
   setVehiclesTypes,
   vehicleTypesCopy,
-  setMatch
+  setMatch,
 }) {
   const [dropdownDisplay, setDropDownDisplay] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [car, setCar] = useState({});
   const handleDropDown = () => {
     if (!dropdownDisplay) {
-        setVehiclesTypes(vehicleTypesCopy);
-        setMatch('');   
+      setVehiclesTypes(vehicleTypesCopy);
+      setMatch("");
     }
     setDropDownDisplay(!dropdownDisplay);
   };
@@ -32,7 +33,7 @@ export default function DropDown({
       newModel += model[i];
     }
 
-    return newModel.toLowerCase() + removeSpaces(type);
+    return [newModel.toLowerCase(), removeSpaces(type)];
   }
 
   function sliceFirstFour(string) {
@@ -42,11 +43,14 @@ export default function DropDown({
 
   const matchVehicleModel = (obj) => {
     setCar(obj);
-    setMatch(obj.model)
+    setMatch(obj.model);
+    // eslint-disable-next-line array-callback-return
     let newVehicleTypes = vehicleTypes.filter((item) => {
       if (
         removeSpaces(item.typeName) === removeSpaces(obj.model) ||
-        combineModelAndType(item.model, item.typeName) ===
+        combineModelAndType(item.model, item.typeName).join("") ===
+          removeSpaces(obj.model) ||
+        combineModelAndType(item.model, item.typeName).reverse().join("") ===
           removeSpaces(obj.model)
       ) {
         if (
@@ -58,6 +62,7 @@ export default function DropDown({
           return true;
         }
       }
+      console.log(obj.model, combineModelAndType(item.model, item.typeName));
     });
     setVehiclesTypes(newVehicleTypes);
     setDropDownDisplay(!dropdownDisplay);
@@ -65,27 +70,27 @@ export default function DropDown({
 
   return (
     <div className="dropdown">
-        <div className="dropdown-button" onClick={() => handleDropDown()}>
-            <p> Click here </p>
-            <span>
-            <BsArrowDownCircleFill />
-            </span>
-        </div>
-        <div
-          className={
-            vehicles && dropdownDisplay ? "dropdown-content" : "hide-dropdown"
-          }
-        >
-          {vehicles.map((bmw) => (
-            <li key={bmw.id}>
-              <div
-                className="dropdown-item"
-                onClick={() => matchVehicleModel(bmw)}
-              >
-                {bmw.model}
-              </div>
-            </li>
-          ))}
+      <div className="dropdown-button" onClick={() => handleDropDown()}>
+        <p> Click here </p>
+        <span>
+          <BsArrowDownCircleFill />
+        </span>
+      </div>
+      <div
+        className={
+          vehicles && dropdownDisplay ? "dropdown-content" : "hide-dropdown"
+        }
+      >
+        {vehicles.map((bmw) => (
+          <li key={bmw.id}>
+            <div
+              className="dropdown-item"
+              onClick={() => matchVehicleModel(bmw)}
+            >
+              {bmw.model}
+            </div>
+          </li>
+        ))}
       </div>
     </div>
   );
