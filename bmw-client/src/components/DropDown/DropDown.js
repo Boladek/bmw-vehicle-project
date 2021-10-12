@@ -62,7 +62,6 @@ export default function DropDown({
           return true;
         }
       }
-      console.log(obj.model, combineModelAndType(item.model, item.typeName));
     });
     setVehiclesTypes(newVehicleTypes);
     setDropDownDisplay(!dropdownDisplay);
