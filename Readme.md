@@ -3,7 +3,7 @@
     Create a new database bmw.
 
 ## Clone from the Repo
-    cd client
+    cd bmw-client
 ### run yarn start
     go to localhost:3000
 
